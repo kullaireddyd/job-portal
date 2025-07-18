@@ -1,0 +1,46 @@
+<!-- src/app/components/job-form/job-form.component.html -->
+<div class="job-form-container">
+  <h2>{{ isEditMode ? 'Edit Job' : 'Create New Job' }}</h2>
+
+  <form (ngSubmit)="onSubmit()" #jobForm="ngForm" novalidate>
+    <label>Job Title <span class="required">*</span></label>
+    <input type="text" [(ngModel)]="job.job_title" name="job_title" required />
+    <div class="error" *ngIf="formSubmitted && !job.job_title">Job Title is required.</div>
+
+    <label>Company Name <span class="required">*</span></label>
+    <input type="text" [(ngModel)]="job.company_name" name="company_name" required />
+    <div class="error" *ngIf="formSubmitted && !job.company_name">Company Name is required.</div>
+
+    <label>Location <span class="required">*</span></label>
+    <input type="text" [(ngModel)]="job.location" name="location" required />
+    <div class="error" *ngIf="formSubmitted && !job.location">Location is required.</div>
+
+    <label>Job Type <span class="required">*</span></label>
+    <select [(ngModel)]="job.job_type" name="job_type" required>
+      <option value="" disabled selected>Select job type</option>
+      <option value="Full-time">Full Time</option>
+      <option value="Part-time">Part Time</option>
+      <option value="Internship">Internship</option>
+      <option value="Contract">Contract</option>
+    </select>
+    <div class="error" *ngIf="formSubmitted && !job.job_type">Job Type is required.</div>
+
+    <label>Salary Range</label>
+    <input type="text" [(ngModel)]="job.salary_range" name="salary_range" />
+
+    <label>Job Description <span class="required">*</span></label>
+    <textarea [(ngModel)]="job.job_description" name="job_description" required></textarea>
+    <div class="error" *ngIf="formSubmitted && !job.job_description">Job Description is required.</div>
+
+    <label>Application Deadline <span class="required">*</span></label>
+    <input type="date" [(ngModel)]="job.application_deadline" name="application_deadline" required />
+    <div class="error" *ngIf="formSubmitted && !job.application_deadline">
+      Application Deadline is required.
+    </div>
+    <div class="error" *ngIf="formSubmitted && job.application_deadline && isPastDeadline(job.application_deadline)">
+      Application Deadline must be a future date.
+    </div>
+
+    <button type="submit">{{ isEditMode ? 'Update Job' : 'Create Job' }}</button>
+  </form>
+</div>

@@ -1,0 +1,38 @@
+
+<div class="application-list-wrapper">
+
+<div class="application-list">
+  <h2>All Job Applications</h2>
+
+  <!-- Sort Controls -->
+  <div class="sort-controls" *ngIf="applications.length > 0">
+    <div class="dropdown">
+      <button (click)="toggleSortDropdown()">Sort</button>
+      <ul class="dropdown-menu" *ngIf="showSortDropdown">
+        <li (click)="applySort('name')">Sort by Name (A-Z)</li>
+        <li (click)="applySort('jobIdAsc')">Sort by Job ID (Ascending)</li>
+        <li (click)="applySort('jobIdDesc')">Sort by Job ID (Descending)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Error message -->
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <!-- No Applications -->
+  <div *ngIf="!loading && filteredApplications.length === 0">
+    <p>No applications submitted yet.</p>
+  </div>
+
+  <!-- Application Cards -->
+  <ul *ngIf="filteredApplications.length > 0">
+    <li *ngFor="let app of filteredApplications" class="application-card">
+      <p><strong>Name:</strong> {{ app.applicant_name }}</p>
+      <p><strong>Email:</strong> {{ app.email }}</p>
+      <p><strong>Job ID:</strong> {{ app.job_id }}</p>
+
+      <button (click)="viewJobDetails(app.job_id)">View Details</button>
+    </li>
+  </ul>
+</div>
+</div>
