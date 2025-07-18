@@ -19,7 +19,7 @@ export interface Job {
   providedIn: 'root'
 })
 export class JobService {
-  private apiUrl = 'http://localhost:3000/api/jobs';
+  private apiUrl = 'https://job-portal-l9am.onrender.com/api/jobs';
 
   constructor(private http: HttpClient) {}
 

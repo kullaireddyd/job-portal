@@ -3,7 +3,7 @@ import { ServerRoute, RenderMode } from '@angular/ssr';
 
 // 👇 Fetch job IDs dynamically at prerender time
 async function fetchJobIds(): Promise<string[]> {
-  const res = await fetch('http://localhost:3000/api/jobs');
+  const res = await fetch('https://job-portal-l9am.onrender.com/api/jobs');
   const jobs = await res.json();
   return jobs.map((job: any) => String(job.id));
 }
