@@ -1,0 +1,46 @@
+<div class="application-page">
+<div class="application-form">
+  <h2>Apply for Job</h2>
+  <form (ngSubmit)="onSubmit()" #jobForm="ngForm" *ngIf="!isSubmitting">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        [(ngModel)]="applicant.name"
+        name="name"
+        id="name"
+        required
+        maxlength="100"
+        #name="ngModel"
+      />
+      <div class="error" *ngIf="name.invalid && name.touched">
+        Name is required and should not exceed 100 characters.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        [(ngModel)]="applicant.email"
+        name="email"
+        id="email"
+        type="email"
+        required
+        maxlength="100"
+        #email="ngModel"
+      />
+      <div class="error" *ngIf="email.invalid && email.touched">
+        Enter a valid email (max 100 characters).
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="jobForm.invalid">Submit Application</button>
+  </form>
+
+  <div class="spinner-container" *ngIf="isSubmitting">
+    <div class="spinner"></div>
+    <p>Submitting...</p>
+  </div>
+  <div class="error" *ngIf="error">{{ error }}</div>
+  <div class="success" *ngIf="success">{{ success }}</div>
+</div>
+</div>

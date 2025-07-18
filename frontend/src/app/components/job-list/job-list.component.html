@@ -1,0 +1,26 @@
+<div class='wrapper'>
+<div class="job-list-container">
+  <div class="job-card" *ngFor="let job of jobs">
+    <div class="job-header">
+      <span>
+        <h2 class="job-title">{{ job.job_title }}</h2>
+        <p class="company-name">{{ job.company_name }}</p>
+      </span>
+    </div>
+
+    <div class="job-details">
+      <p><strong>Location:</strong> {{ job.location }}</p>
+      <p><strong>Type:</strong> {{ job.job_type }}</p>
+      <p><strong>Deadline:</strong> {{ job.application_deadline | date: 'MMM d, y' }}</p>
+    </div>
+
+    <div class="btn-group">
+      <button class="btn btn-view" (click)="viewJob(job.id)">View</button>
+      <button class="btn btn-edit" (click)="editJob(job.id)">Edit</button>
+      <button class="btn btn-delete" (click)="deleteJob(job.id!)">Delete</button>
+    </div>
+  </div>
+
+  <button class="floating-button" (click)="createNewJob()" title="Create Job">+</button>
+</div>
+</div>

@@ -1,0 +1,195 @@
+.application-list-wrapper {
+  background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.application-list {
+  position: relative;
+  z-index: 2;
+    padding: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 70px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #f0f4ff, #e0f7fa);
+    border-radius: 1rem;
+  
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #1e3a8a;
+      margin-bottom: 2rem;
+      font-weight: 700;
+    }
+  
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+  
+    li.application-card {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+      border: 1px solid #e0e7ff;
+  
+      // Repeating background color pattern using nth-child mod
+      &:nth-child(5n + 1) {
+        background-color: #fefce8; // soft yellow
+      }
+      &:nth-child(5n + 2) {
+        background-color: #e0f2fe; // soft blue
+      }
+      &:nth-child(5n + 3) {
+        background-color: #fce7f3; // soft pink
+      }
+      &:nth-child(5n + 4) {
+        background-color: #dcfce7; // soft green
+      }
+      &:nth-child(5n + 5) {
+        background-color: #f3e8ff; // soft purple
+      }
+  
+      p {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+        color: #1e293b;
+        text-align: center;
+  
+        strong {
+          color: #0f172a;
+        }
+      }
+  
+      button {
+        display: block;
+        margin: 1rem auto 0 auto;
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+        background: #6366f1;
+        color: #fff;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+  
+        &:hover {
+          background: #4f46e5;
+        }
+      }
+  
+      &:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+    }
+  
+    p {
+      text-align: center;
+      color: #64748b;
+      font-style: italic;
+    }
+  }
+  .filter-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  
+    input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      flex: 1;
+    }
+  
+    .dropdown {
+      position: relative;
+  
+      button {
+        padding: 8px 12px;
+        background-color: #2b6cb0;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+  
+      .dropdown-menu {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        width: 160px;
+  
+        li {
+          padding: 10px;
+          cursor: pointer;
+  
+          &:hover {
+            background-color: #f1f1f1;
+          }
+        }
+      }
+    }
+  }
+  .sort-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1.5rem;
+  
+    .dropdown {
+      position: relative;
+  
+      button {
+        padding: 8px 16px;
+        background-color: #2b6cb0;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 500;
+      }
+  
+      .dropdown-menu {
+        position: absolute;
+        top: 110%;
+        right: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        z-index: 100;
+  
+        li {
+          padding: 10px 15px;
+          cursor: pointer;
+  
+          &:hover {
+            background-color: #f3f3f3;
+          }
+        }
+      }
+    }
+  }
+  .dropdown-menu li {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: #e2e8f0;
+    }
+  }
+        

@@ -1,0 +1,33 @@
+<div class='wrapper'>
+<div *ngIf="jobDetails" class="job-card">
+  <div class="job-header">
+    <h1>{{ jobDetails.job_title }}</h1>
+    <p class="company-name">{{ jobDetails.company_name }}</p>
+  </div>
+
+  <div class="job-info">
+    <span class="info-chip">
+      <i class="fa-solid fa-location-dot"></i> {{ jobDetails.location }}
+    </span>
+    <span class="info-chip">
+      <i class="fa-regular fa-clock"></i> {{ jobDetails.job_type }}
+    </span>
+    <span class="info-chip">
+      <i class="fa-solid fa-sack-dollar"></i> ₹{{ jobDetails.salary_range || 'N/A' }}
+    </span>
+    <span class="info-chip">
+      <i class="fa-regular fa-calendar"></i> Apply by: {{ jobDetails.application_deadline | date: 'MMMM d, y' }}
+    </span>
+  </div>
+
+  <div class="job-description">
+    <h3>Description</h3>
+    <p>{{ jobDetails.job_description }}</p>
+  </div>
+
+  <!-- Conditionally display "Apply Now" button if coming from the Applications page -->
+  <a *ngIf="!showApplyButton" [routerLink]="['/jobs', jobDetails.id, 'apply']" class="apply-now">
+    <i class="fa-solid fa-paper-plane"></i> Apply Now
+  </a>
+</div>
+</div>
