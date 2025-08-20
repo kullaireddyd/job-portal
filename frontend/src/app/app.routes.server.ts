@@ -3,9 +3,21 @@ import { ServerRoute, RenderMode } from '@angular/ssr';
 
 // 👇 Fetch job IDs dynamically at prerender time
 async function fetchJobIds(): Promise<string[]> {
-  const res = await fetch('https://job-portal-3-h4bs.onrender.com/m/api/jobs');
-  const jobs = await res.json();
-  return jobs.map((job: any) => String(job.id));
+  try {
+    const res = await fetch('https://job-portal-l9am.onrender.com/api/jobs');
+    if (!res.ok) throw new Error(`Failed to fetch jobs: ${res.status}`);
+
+    const json = await res.json();
+    
+    // Check if response is an array directly or inside a `data` field
+    const jobs = Array.isArray(json) ? json : json?.data;
+
+    // 🔐 Safe map call
+    return Array.isArray(jobs) ? jobs.map((job: any) => String(job.id)) : [];
+  } catch (err) {
+    console.error('Error in fetchJobIds:', err);
+    return [];
+  }
 }
 
 export const serverRoutes: ServerRoute[] = [

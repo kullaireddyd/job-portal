@@ -11,7 +11,7 @@ export interface Application {
   providedIn: 'root',
 })
 export class ApplicationService {
-  private apiUrl = 'https://job-portal-3-h4bs.onrender.com/m/api/applications'; // Adjust API URL as needed
+  private apiUrl = 'https://job-portal-3-h4bs.onrender.com/api/applications'; // Adjust API URL as needed
 
   constructor(private http: HttpClient) {}
 

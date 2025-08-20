@@ -32,7 +32,7 @@ export class JobApplicationFormComponent implements OnInit {
     this.jobId = this.route.snapshot.paramMap.get('id') || '';
 
     // Fetch job details including deadline
-    this.http.get<any>(`https://job-portal-3-h4bs.onrender.com/m/api/jobs/${this.jobId}`).subscribe({
+    this.http.get<any>(`https://job-portal-3-h4bs.onrender.com/api/jobs/${this.jobId}`).subscribe({
       next: (job) => {
         this.jobDeadline = job.deadline; // Expected to be in YYYY-MM-DD format
       },
@@ -68,7 +68,7 @@ export class JobApplicationFormComponent implements OnInit {
   
     this.isSubmitting = true;
   
-    this.http.post(`https://job-portal-3-h4bs.onrender.com/m/api/applications/${this.jobId}/apply`, this.applicant).subscribe({
+    this.http.post(`https://job-portal-3-h4bs.onrender.com/api/applications/${this.jobId}/apply`, this.applicant).subscribe({
       next: () => {
         this.success = 'Application submitted successfully!';
         this.isSubmitting = false;
